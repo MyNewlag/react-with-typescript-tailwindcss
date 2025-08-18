@@ -1,11 +1,22 @@
 
-import "tailwindcss";
+
+import Content from "./layout/content/Content";
+import Header from "./layout/header/Header";
+import Sidebar from "./layout/sidebar/Sidebar";
+import { useAppSelector } from "./redux/reduxHooks";
+
 function App() {
 
+  const {theme} = useAppSelector(state=>state.uiManageReducer)
+
   return (
-    <div className="bg-blue-400">
-      asma
-    </div>
+    <main className={theme}>
+        <div className="dark:text-gray-100">
+          <Content/>
+          <Header />
+          <Sidebar/>
+      </div>
+    </main>
   )
 }
 

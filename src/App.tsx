@@ -1,4 +1,5 @@
 
+import { ToastContainer } from "react-toastify";
 import AppContainer from "./component/container/AppContainer";
 import Content from "./layout/content/Content";
 import Header from "./layout/header/Header";
@@ -13,6 +14,7 @@ function App() {
           <Header />
           <Sidebar/>
       </div>
+        <ToastContainer stacked/>
     </AppContainer>
   )
 }

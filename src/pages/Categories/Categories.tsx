@@ -1,22 +1,38 @@
 import { useEffect, useState } from "react";
-import { getTaskCategories } from "../../services/taskCategories";
+import { addTaskCategories, getTaskCategories } from "../../services/taskCategories";
 import type { CategoriesListItemType } from "../../types/taskCategories";
 import { convertMiladiToJalali } from "../../utils/dateUtils";
 import {  } from "react-icons/ri";
 import { BsTrash3 , BsPencil  } from "react-icons/bs";
-import { IoMdAdd } from "react-icons/io";
-;
+import { errorToast, successToast } from "../../utils/toastUtils";
+import AddModalDialog from "./partial/AddModalDialog";
 
 const Categories = () => {
 
 
 
 const [data , setData]=useState<CategoriesListItemType[]>([])
-    const handleGetTashCategories=async()=>{
-       const res=await getTaskCategories()
-        setData(res)
+
+
+const handleGetTashCategories=async()=>{
+    const res=await getTaskCategories()
+    if (res) {
+         setData(res)
+         successToast("عملیات با موفقیت انجام شد")
+         console.log(res);
+        }else{
+            errorToast()
+        }
     }
 
+    const handleAddCategory=async()=>{
+        const res=await addTaskCategories()
+        if (res.status==201) {
+            setData([...data , res.data])
+              successToast("دسته بندی با موفقیت اضافه شد")
+        }
+    }
+    
     useEffect(()=>{
         handleGetTashCategories()
     },[])
@@ -25,7 +41,8 @@ const [data , setData]=useState<CategoriesListItemType[]>([])
     <div >
         <div className="flex justify-between items-center px-2 ">
             <h1 className="py-5 text-lg font-bold"> لیست دسته بندی وظایف</h1>
-            <button className="text-white bg-sky-500 rounded-lg px-2 py-2">افزودن دسته بندی</button>
+            <AddModalDialog/>
+
         </div>
         <table className="table w-full [&>*]:text-center rounded-lg overflow-hidden shadow-sm
          bg-white dark:bg-gray-600 dark:shadow-gray-500">
@@ -60,6 +77,8 @@ const [data , setData]=useState<CategoriesListItemType[]>([])
                 }
             </tbody>
         </table>
+
+
     </div>
     );
 }

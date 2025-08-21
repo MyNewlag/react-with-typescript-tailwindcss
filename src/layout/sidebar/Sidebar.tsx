@@ -3,7 +3,7 @@ import SidebarItems from "./sidebarItems";
 import TopActionElements from "./TopActionElements";
 import { BiSolidCategory } from "react-icons/bi";
 import { FaTasks } from "react-icons/fa";
-import SidebarContainer from "../../component/container/SidebarContainer";
+import SidebarContainer from "../../components/container/SidebarContainer";
 
 const Sidebar = () => {
 

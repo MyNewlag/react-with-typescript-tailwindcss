@@ -1,8 +1,12 @@
-export type CategoriesListItemType =   {
-    id: string
+export type AddCategoriesType =   {
     title: string
     description: string
-    icon: string
     userId: string
     createdAt: string
+    icon: string
 }
+
+export type CategoriesListItemType =  AddCategoriesType & {
+    id: string
+}
+

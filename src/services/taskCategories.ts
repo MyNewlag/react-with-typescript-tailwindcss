@@ -1,4 +1,4 @@
-import type { CategoriesListItemType } from "../types/taskCategories"
+import type { AddCategoriesType, CategoriesListItemType } from "../types/taskCategories"
 import httpService from "./httpService"
 
 
@@ -11,13 +11,7 @@ return null
 }
 
 
-export const addTaskCategories=()=>{
-    return  httpService<CategoriesListItemType>("/taskCategories" ,"POST" ,{
-           title: "2 تست",
-           description: "توضیحات تست 2",
-           icon: "work_icon",
-           userId: "1",
-           createdAt: "2024-01-01T20:00:00.000Z"
-    })
+export const addTaskCategories=(data : AddCategoriesType)=>{
+    return  httpService<CategoriesListItemType>("/taskCategories" ,"POST" , data)
 
 }

@@ -2,7 +2,7 @@
 const Dashbords = () => {
     return (
         <div>
-            داشبوئر
+            داشبرد
         </div>
     );
 }

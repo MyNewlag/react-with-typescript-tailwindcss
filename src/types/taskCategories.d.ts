@@ -9,4 +9,3 @@ export type AddCategoriesType =   {
 export type CategoriesListItemType =  AddCategoriesType & {
     id: string
 }
-

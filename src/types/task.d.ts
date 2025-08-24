@@ -1,15 +1,15 @@
 
 export interface AddTaskListType{
-      groupCode: string,
+      groupCode?: string,
       title: string,
-      description: string,
+      description?: string,
       isDone: boolean,
       taskCategoryId: string,
-      repetitionType: number,
-      repetitionItems: number,
-      includeVacation: true,
+      repetitionType?: number,
+      repetitionItems?: number,
+      includeVacation?: true,
       startedAt: string,
-      endedAt: string,
+      endedAt?: string,
       createdAt: string
 }
 

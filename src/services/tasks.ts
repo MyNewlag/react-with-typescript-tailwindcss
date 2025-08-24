@@ -20,5 +20,5 @@ export const deleteTaskServise=(taskId:string)=>
 
 export const getTaskWithDate=(date:string)=>
     { 
-        return httpService(`/tasks?startedAt_like=${date}` , 'GET')
+        return httpService(`/tasks?startedAt_like${date}` , 'GET')
     }

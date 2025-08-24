@@ -1,3 +1,5 @@
+import type { TaskListType } from "./task"
+
 export type AddCategoriesType =   {
     title: string
     description: string
@@ -6,6 +8,10 @@ export type AddCategoriesType =   {
     icon: string
 }
 
-export type CategoriesListItemType =  AddCategoriesType & {
+export interface CategoriesListItemType extends  AddCategoriesType  {
     id: string
+}
+
+export interface CategoriesWithTaskListItemType extends CategoriesListItemType {
+    tasks:TaskListType[]
 }

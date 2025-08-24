@@ -11,18 +11,24 @@ return null
 }
 
 
+export const getTaskCategoriesWithTaskService=()=>{
+    return  httpService("/taskCategories?_embed=tasks" ,"GET" )
+
+}
+
+
 export const addTaskCategories=(data : AddCategoriesType)=>{
-    return  httpService<CategoriesListItemType>("/taskCategories" ,"POST" , data)
+    return  httpService("/taskCategories" ,"POST" , data)
 
 }
 
 
 export const deleteTaskCategories=(id:string)=>{
-    return  httpService<CategoriesListItemType>(`/taskCategories/${id}` ,"DELETE")
+    return  httpService(`/taskCategories/${id}` ,"DELETE")
 
 }
 
 
 export const editTaskCategories=(id:string , data : AddCategoriesType)=>{
-    return  httpService<CategoriesListItemType>(`/taskCategories/${id}` ,"PUT" , data)
+    return  httpService(`/taskCategories/${id}` ,"PUT" , data)
 }

@@ -1,9 +1,9 @@
-import type { AddCategoriesType, CategoriesListItemType } from "../types/taskCategories"
+import type { AddCategoriesType } from "../types/taskCategories"
 import httpService from "./httpService"
 
 
 export const getTaskCategories=async()=>{
-    const res=await httpService<CategoriesListItemType[]>("/taskCategories" ,"GET")
+    const res=await httpService("/taskCategories?userId=1" ,"GET")
 if (res.status==200) {
     return res.data
 }

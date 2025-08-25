@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
+ } from "@/components/ui/dialog";
 import { addTaskCategories, editTaskCategories } from "@/services/taskCategories";
 import type { AddCategoriesType, CategoriesListItemType } from "@/types/taskCategories";
 import { successToast } from "@/utils/toastUtils";
@@ -29,13 +29,12 @@ const AddModalDialog = ({setCategories , open , setOpen ,selectedItem ,setSelect
     }) => {
             
 
-    const [loading ,setLoading]=useState(false)
+    const [isLoading ,setIsLoading]=useState(false)
     const [values , setValues]=useState<AddCategoriesType>(initialValues)
 
         const handleAddCategory=async(e:FormEvent<HTMLFormElement>)=>{
-            setLoading(true)
+            setIsLoading(true)
             e.preventDefault()
-
             const res=selectedItem ? await editTaskCategories(selectedItem.id , values) :
              await addTaskCategories(values)
             if (res.status==201 || res.status==200) {
@@ -43,7 +42,7 @@ const AddModalDialog = ({setCategories , open , setOpen ,selectedItem ,setSelect
                  successToast(selectedItem ? "دسته بندی با موفقیت ویرایش شد":"دسته بندی با موفقیت اضافه شد")
                  setOpen(false)
                  setValues(initialValues)
-                 setLoading(false)
+                 setIsLoading(false)
             }
         }
 
@@ -71,7 +70,7 @@ const AddModalDialog = ({setCategories , open , setOpen ,selectedItem ,setSelect
                 onClick={()=>setSelectedItem(undefined)}
                 >
                     افزودن دسته بندی 
-                    </DialogTrigger>
+                </DialogTrigger>
                 <DialogContent>
                     <DialogHeader>
                         <DialogTitle>
@@ -90,7 +89,7 @@ const AddModalDialog = ({setCategories , open , setOpen ,selectedItem ,setSelect
                      onChange={(e)=>setValues({... values , description:e.target.value})}
                      placeholder="توضیحات را وارد کنید" required/>
 
-                    <AppButton  type="submit"  loading={loading}/>
+                    <AppButton  type="submit"  isLoading={isLoading}/>
                 </form>
                 
     

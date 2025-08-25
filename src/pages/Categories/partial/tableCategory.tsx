@@ -10,7 +10,7 @@ type TableCategoryProps = {
         setCategories : React.Dispatch<React.SetStateAction<CategoriesListItemType[]>>
          setOpen:(isOpen:boolean)=>void
          setSelectedItem:(item:CategoriesListItemType)=>void
-}
+    }
 
 const TableCategory = ({categories ,setCategories  , setOpen ,setSelectedItem }:TableCategoryProps )=>{
 

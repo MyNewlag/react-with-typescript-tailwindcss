@@ -21,6 +21,8 @@ const handleGetTaskCategories=async()=>{
             errorToast()
         }
     }
+    
+    
 
     const handleAddCategory=(data:CategoriesListItemType)=>{
         if (selectedItem) {

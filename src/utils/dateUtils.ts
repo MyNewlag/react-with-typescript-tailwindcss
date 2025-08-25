@@ -9,13 +9,13 @@ export const convertMiladiToJalali=(date?:string | undefined , format:formatType
     return newDate.format(format)
 }
 
-export const getDatesInRange = (startOffeset:number , endOffcet:number) : string[]=>{
+export const getDatesInRange = (startOffcet:number , endOffcet:number) : string[]=>{
     const today = new Date();
     const dates : string[]=[]
     
-    startOffeset = - startOffeset 
+    startOffcet = - startOffcet 
 
-    for(let i=startOffeset ; i <= endOffcet ; i++){
+    for(let i=startOffcet ; i <= endOffcet ; i++){
         const curentDate = new Date(today)
         curentDate.setDate(today.getDate() + i)
          dates.push(curentDate.toISOString())

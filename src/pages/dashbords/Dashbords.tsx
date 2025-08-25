@@ -2,15 +2,15 @@ import AppButton from "@/components/sharedComponents/AppButton";
 import { getTaskWithDate } from "@/services/tasks";
 import type { TaskListType } from "@/types/task";
 import { useEffect, useState } from "react";
+import AddTaskModal from "./partials/AddTaskModal";
 
 const Dashbords = () => {
     const [todayTasks , setTodayTasks]=useState<TaskListType[]>([])
+    const [open , setOpen]=useState(false)
 
     const handleGetTodayTask=async()=>{
       const today = new Date().toISOString().split("T")[0]
-      console.log(today);
       const res= await getTaskWithDate(today)
-      console.log(res);
       if (res.status==200) {
         setTodayTasks(res.data)
       }
@@ -35,7 +35,8 @@ const Dashbords = () => {
                 ):(
                     <h1 className="text-center w-full">امروز تسکی نداری...</h1>
                 )}
-                <AppButton title="افزودن تسک جدید"/>
+                <AppButton title="افزودن تسک جدید" onClick={()=>setOpen(true)}/>
+                <AddTaskModal open={open}  setOpen={setOpen} handleRefresh={handleGetTodayTask}/>
             </div>
         </div>
     );

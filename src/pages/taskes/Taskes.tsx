@@ -10,7 +10,7 @@ import  { useEffect, useState } from 'react';
 const Taskes = () => {
 
     const [dates , setDates]=useState<{miladi:string , jalali:string}[]>([])
-    const [taskCats , setTaskCays]=useState<CategoriesWithTaskListItemType[]>([])
+    const [taskCats , setTaskCats]=useState<CategoriesWithTaskListItemType[]>([])
     const [input , setInput]=useState("")
 
     const generatDatesInRings=()=>{
@@ -23,12 +23,13 @@ const Taskes = () => {
     }
 
     const handleGetTasks=async()=>{
-        const res=await getTaskCategoriesWithTaskService()        
+        const res=await getTaskCategoriesWithTaskService()   
+        console.log(res);
+             
        if (res.status==200) {
-        setTaskCays(res.data)
+        setTaskCats(res.data)
        }
     }
-console.log(taskCats);
 
     const handleChangIsDone=async(task:TaskListType)=>{
          const res=await editTaskServise(task.id , {isDone:!task.isDone})

@@ -10,7 +10,7 @@ const Header = () => {
     const dispatch = useAppDispatch()
     
     return (
-            <section id="header" 
+         <section id="header" 
             className="fixed top-0 left-0 h-app_header_h w-full bg-white
              dark:bg-gray-700 md:pr-app_sidebar_w shadow-lg">
 
@@ -20,7 +20,9 @@ const Header = () => {
                     <RxHamburgerMenu size={24}/>
                 </button>
 
-                <p className="text-gray-500 hidden md:block">{convertMiladiToJalali(undefined , "dddd ، jD jMMMM jYYYY")}</p>
+                <p className="text-gray-500 hidden md:block">
+                    {convertMiladiToJalali(undefined , "dddd ، jD jMMMM jYYYY")}
+                </p>
                 <span className="flex items-center gap-4">
                     <span className="relative">
                         <BellIcon className="text-gray-500"/>
@@ -32,7 +34,7 @@ const Header = () => {
                     <p className="text-gray-400">نام کاربر</p>
                 </span>
                </div>
-            </section>
+         </section>
     );
 }
 

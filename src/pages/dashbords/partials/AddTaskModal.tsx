@@ -19,7 +19,7 @@ import { addTaskServise } from "@/services/tasks";
 const AddTaskModal = ({open , setOpen ,handleRefresh}:{open:boolean ,setOpen:(isOpen:boolean)=>void ,handleRefresh:()=>void }) => {
 
     const [title , setTitle]=useState("")
-    const [selectCategory , setSelectCategory]=useState<string>()
+    const [selectCategoryId , setSelectCategoryId]=useState<string>()
     const [isLoading , setIsLoading]=useState(false)
     const [categories , setCategories]=useState<CategoriesListItemType[]>([])
 
@@ -36,18 +36,19 @@ const AddTaskModal = ({open , setOpen ,handleRefresh}:{open:boolean ,setOpen:(is
         handleGetTaskCategories()
        },[])
    
-
+       console.log(categories);
+       
 
     const handleAddTask=async(e:FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
-        if(!selectCategory || !title.trim()) return errorToast("فیلدها باید پر شوند")
+        if(!selectCategoryId || !title.trim()) return errorToast("فیلدها باید پر شوند")
         setIsLoading(true)
     const today = new Date().toISOString()
     const res=await addTaskServise({
         createdAt:today,
         startedAt:today,
         isDone:false,
-        taskCategoryId:selectCategory,
+        taskCategoryId:selectCategoryId,
         title
     })
     setIsLoading(false)
@@ -71,10 +72,10 @@ const AddTaskModal = ({open , setOpen ,handleRefresh}:{open:boolean ,setOpen:(is
                     
     
                 <form className="max-w-sm mx-auto space-y-5" onSubmit={handleAddTask} >
-
+                  
                     <AppSelect 
                      title="دسته بندی"
-                      onChange={(id:string)=>setSelectCategory(id)}
+                      onChange={(id)=>setSelectCategoryId(id)}
                       options={categories.map(category=>({
                         title:category.title,
                         value:category.id

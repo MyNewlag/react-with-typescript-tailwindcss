@@ -23,7 +23,7 @@ const Dashbords = () => {
         <div className="w-full h-full flex justify-center items-center">
             <div className="w-full max-w-96 h-full flex flex-col gap-10">
                 {todayTasks.length ?(
-                    <ul className="space-y-3 p-4 bg-white data:bg-gray-800 shadow-lg rounded-lg">
+                    <ul className="space-y-3 p-4 bg-white dark:bg-gray-500 shadow-lg rounded-lg">
                         {todayTasks.map(task=>(
                            <li key={task.id} className="w-full rounded-sm border-gray-400 border py-2 px-3
                            hover:shadow-md cursor-pointer transition-all">

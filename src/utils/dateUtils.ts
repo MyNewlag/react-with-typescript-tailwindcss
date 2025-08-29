@@ -17,7 +17,7 @@ export const getDatesInRange = (startOffcet:number , endOffcet:number) : string[
 
     for(let i=startOffcet ; i <= endOffcet ; i++){
         const curentDate = new Date(today)
-        curentDate.setDate(today.getDate() + i)
+         curentDate.setDate(today.getDate() + i)
          dates.push(curentDate.toISOString())
     }
     return dates

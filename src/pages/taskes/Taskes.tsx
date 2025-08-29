@@ -14,8 +14,8 @@ const Taskes = () => {
     const [input , setInput]=useState("")
 
     const generatDatesInRings=()=>{
-         const resDatas=getDatesInRange(3,5)
-        const restJalaliDates=resDatas.map(date => ({
+         const resDates=getDatesInRange(3,5)
+        const restJalaliDates=resDates.map(date => ({
             miladi:date,
             jalali:convertMiladiToJalali(date,'jD jMMMM jYYYY')
         }))
@@ -23,13 +23,11 @@ const Taskes = () => {
     }
 
     const handleGetTasks=async()=>{
-        const res=await getTaskCategoriesWithTaskService()   
-        console.log(res);
-             
+        const res=await getTaskCategoriesWithTaskService()    
        if (res.status==200) {
         setTaskCats(res.data)
-       }
     }
+    } 
 
     const handleChangIsDone=async(task:TaskListType)=>{
          const res=await editTaskServise(task.id , {isDone:!task.isDone})

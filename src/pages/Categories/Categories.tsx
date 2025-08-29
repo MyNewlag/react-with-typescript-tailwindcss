@@ -10,21 +10,20 @@ const Categories = () => {
 
 const [categories , setCategories]=useState<CategoriesListItemType[]>([])
  const [open ,setOpen]=useState(false)
-    const [selectedItem , setSelectedItem]=useState<CategoriesListItemType>()
+ const [selectedItem , setSelectedItem]=useState<CategoriesListItemType>()
     
 
 const handleGetTaskCategories=async()=>{
     const res=await getTaskCategories()
     if (res) {
-         setCategories(res)
-        }else{
-            errorToast()
-        }
+        setCategories(res)
+    }else{
+        errorToast()
     }
-    
-    
+}
 
-    const handleAddCategory=(data:CategoriesListItemType)=>{
+
+const handleChangeCategoryList=(data:CategoriesListItemType)=>{
         if (selectedItem) {
             setCategories(oldArr=>{
                 const newArr=[...oldArr]
@@ -46,14 +45,14 @@ const handleGetTaskCategories=async()=>{
     <div >
         <div className="flex justify-between items-center px-2 ">
             <h1 className="py-5 text-lg font-bold"> لیست دسته بندی وظایف</h1>
-            <AddModalDialog setCategories={handleAddCategory} open={open} setOpen={setOpen}
+            <AddModalDialog setCategories={handleChangeCategoryList} open={open} setOpen={setOpen}
             selectedItem={selectedItem} setSelectedItem={setSelectedItem}/>
         </div>
 
             <TableCategory categories={categories} setCategories={setCategories} setOpen={setOpen}
              setSelectedItem={setSelectedItem} />
     </div>
-    );
+    );                                                          
 }
 
 export default Categories;

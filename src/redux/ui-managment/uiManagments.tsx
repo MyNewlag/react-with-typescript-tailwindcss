@@ -1,7 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 type themeType = "dark"|"light"
-
 type initialStateType = {showSidebar:boolean , theme:themeType}
 
 const initialState : initialStateType = {showSidebar:false , theme:localStorage.getItem("theme")as themeType || "light"}

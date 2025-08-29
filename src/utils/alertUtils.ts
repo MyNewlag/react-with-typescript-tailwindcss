@@ -5,7 +5,7 @@ export const successAlertModal=(
     text:string ,
      icon : SweetAlertIcon)=>{
     
-Swal.fire({
+return Swal.fire({
   title,
   text,
   icon,
@@ -28,7 +28,7 @@ Swal.fire({
 export const confirmAlert=(
     title:string,
     text:string,
-    icon:SweetAlertIcon = "warning",
+    icon:SweetAlertIcon = "success",
 )=>{
     return Swal.fire({
      title,
